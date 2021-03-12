@@ -24,14 +24,15 @@ const useRowStyles = makeStyles({
   },
 });
 
-function createData(registro, municipio, area, eixo, data, status) {
+function createData(name, calories, fat, carbs, protein, price, vinculado) {
   return {
-    registro,
-    municipio,
-    area,
-    eixo,
-    data,
-    status,
+    name,
+    calories,
+    fat,
+    carbs,
+    protein,
+    price,
+    vinculado,
     history: [
       { date: "2020-01-05", customerId: "11091700", amount: 3 },
       { date: "2020-01-02", customerId: "Anonymous", amount: 1 },
@@ -41,6 +42,23 @@ function createData(registro, municipio, area, eixo, data, status) {
 
 //dados fictícios
 const rows = [
+  createData(
+    "2020.001.000155/RG",
+    "Salvador",
+    "COADE",
+    "Fauna",
+    "19/01/2021",
+    "Vinculado"
+  ),
+
+  createData(
+    "2020.001.000155/RG",
+    "Salvador",
+    "COADE",
+    "Fauna",
+    "19/01/2021",
+    "Vinculado"
+  ),
   createData(
     "2020.001.000155/RG",
     "Salvador",

@@ -24,6 +24,33 @@ const useRowStyles = makeStyles({
   },
 });
 
+function createData(registro, municipio, area, eixo, data, status) {
+  return {
+    registro,
+    municipio,
+    area,
+    eixo,
+    data,
+    status,
+    history: [
+      { date: "2020-01-05", customerId: "11091700", amount: 3 },
+      { date: "2020-01-02", customerId: "Anonymous", amount: 1 },
+    ],
+  };
+}
+
+//dados fictícios
+const rows = [
+  createData(
+    "2020.001.000155/RG",
+    "Salvador",
+    "COADE",
+    "Fauna",
+    "19/01/2021",
+    "Vinculado"
+  ),
+];
+
 //componente de linhas
 function Row(props) {
   const { row } = props;
@@ -49,6 +76,7 @@ function Row(props) {
         <TableCell align="right">{row.fat}</TableCell>
         <TableCell align="right">{row.carbs}</TableCell>
         <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="right">{row.price}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -56,11 +84,11 @@ function Row(props) {
             <Box margin={1}>
               <Table size="small" aria-label="purchases">
                 <TableHead>
-                  <TableRow>
-                    <TableCell>Date</TableCell>
-                  </TableRow>
+                  <TableRow></TableRow>
                 </TableHead>
-                <TableBody>{"corpo da tabela"}</TableBody>
+                <span style={{ opacity: 0.5 }}>
+                  Derramamento de óleo da pista
+                </span>
               </Table>
             </Box>
           </Collapse>
@@ -69,33 +97,6 @@ function Row(props) {
     </React.Fragment>
   );
 }
-
-function createData(name, calories, fat, carbs, protein, price) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      { date: "2020-01-05", customerId: "11091700", amount: 3 },
-      { date: "2020-01-02", customerId: "Anonymous", amount: 1 },
-    ],
-  };
-}
-
-//dados fictícios
-const rows = [
-  createData(
-    "2020.001.000155/RG",
-    "Salvador",
-    "COADE",
-    "Fauna",
-    "19/01/2021",
-    "Vinculado"
-  ),
-];
 
 export default function App() {
   return (

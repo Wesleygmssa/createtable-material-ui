@@ -14,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { Container } from "./styles";
 
 const useRowStyles = makeStyles({
   root: {
@@ -131,25 +132,27 @@ const rows = [
 
 export default function App() {
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Container>
+      <TableContainer component={Paper}>
+        <Table aria-label="collapsible table">
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell>Dessert (100g serving)</TableCell>
+              <TableCell align="right">Calories</TableCell>
+              <TableCell align="right">Fat&nbsp;(g)</TableCell>
+              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <Row key={row.name} row={row} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Container>
   );
 }

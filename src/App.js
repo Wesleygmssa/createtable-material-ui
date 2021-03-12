@@ -19,24 +19,19 @@ import { Container } from "./styles";
 const useRowStyles = makeStyles({
   root: {
     "& > *": {
-      borderBottom: "unset",
+      // borderBottom: "unset",
     },
   },
 });
 
-function createData(name, calories, fat, carbs, protein, price, vinculado) {
+function createData(registro, municipio, area, eixo, data, status) {
   return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    vinculado,
-    history: [
-      { date: "2020-01-05", customerId: "11091700", amount: 3 },
-      { date: "2020-01-02", customerId: "Anonymous", amount: 1 },
-    ],
+    registro,
+    municipio,
+    area,
+    eixo,
+    data,
+    status,
   };
 }
 
@@ -87,14 +82,16 @@ function Row(props) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
+
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.registro}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
-        <TableCell align="right">{row.price}</TableCell>
+
+        <TableCell align="right">{row.municipio}</TableCell>
+        <TableCell align="right">{row.area}</TableCell>
+        <TableCell align="right">{row.eixo}</TableCell>
+        <TableCell align="right">{row.data}</TableCell>
+        <TableCell align="right">{row.status}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>

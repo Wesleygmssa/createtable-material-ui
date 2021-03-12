@@ -14,14 +14,11 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import { Container } from "./styles";
+import { Container, TableContent } from "./styles";
+import TablePagination from "@material-ui/core/TablePagination";
 
 const useRowStyles = makeStyles({
-  root: {
-    "& > *": {
-      // borderBottom: "unset",
-    },
-  },
+  root: {},
 });
 
 function createData(registro, municipio, area, eixo, data, status) {
@@ -83,9 +80,7 @@ function Row(props) {
           </IconButton>
         </TableCell>
 
-        <TableCell component="th" scope="row">
-          {row.registro}
-        </TableCell>
+        <TableCell>{row.registro}</TableCell>
 
         <TableCell align="right">{row.municipio}</TableCell>
         <TableCell align="right">{row.area}</TableCell>
@@ -93,22 +88,11 @@ function Row(props) {
         <TableCell align="right">{row.data}</TableCell>
         <TableCell align="right">{row.status}</TableCell>
       </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box margin={1}>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow></TableRow>
-                </TableHead>
-                <span style={{ opacity: 0.5 }}>
-                  Derramamento de óleo da pista
-                </span>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
+      <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <TableContent>Derramamento de óleo da pistate</TableContent>
+        </Collapse>
+      </TableCell>
     </React.Fragment>
   );
 }
@@ -118,17 +102,13 @@ export default function App() {
     <Container>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
-          <TableHead>
-            <TableRow>
-              <TableCell />
-              <TableCell>Nº do Registro</TableCell>
-              <TableCell align="right">Município</TableCell>
-              <TableCell align="right">Área</TableCell>
-              <TableCell align="right">Eixo Temático</TableCell>
-              <TableCell align="right">Data do Registro</TableCell>
-              <TableCell align="right">Status</TableCell>
-            </TableRow>
-          </TableHead>
+          <TableCell />
+          <TableCell>Nº do Registro</TableCell>
+          <TableCell align="right">Município</TableCell>
+          <TableCell align="right">Área</TableCell>
+          <TableCell align="right">Eixo Temático</TableCell>
+          <TableCell align="right">Data do Registro</TableCell>
+          <TableCell align="right">Status</TableCell>
           <TableBody>
             {rows.map((row) => (
               <Row key={row.name} row={row} />
@@ -136,6 +116,15 @@ export default function App() {
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={100}
+        rowsPerPage={5}
+        page={3}
+        onChangePage={() => {}}
+        onChangeRowsPerPage={() => {}}
+      />
     </Container>
   );
 }
